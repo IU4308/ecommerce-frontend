@@ -2,7 +2,7 @@ import { IoCartOutline } from 'react-icons/io5';
 import { Link } from 'react-router';
 
 type Product = {
-    id: number;
+    id: string;
     name: string;
     price: number;
     imageUrl: string;

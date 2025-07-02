@@ -1,12 +1,15 @@
+import { useLoaderData } from 'react-router';
 import ProductCard from './ProductCard';
 
+type Product = {
+    id: string;
+    name: string;
+    price: number;
+    imageUrl: string;
+};
+
 export default function Home() {
-    const products = Array.from({ length: 8 }, (_, i) => ({
-        id: i + 1,
-        name: 'iPhone 12 Pro',
-        price: 50,
-        imageUrl: `https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016105/product-image/2409L_61.jpg`,
-    }));
+    const products = useLoaderData() as Product[];
     return (
         <div>
             <div className="text-4xl pb-16">Women</div>
