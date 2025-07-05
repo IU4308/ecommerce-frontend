@@ -1,6 +1,7 @@
 import { IoCartOutline } from 'react-icons/io5';
 import type { HomeProduct } from '../../definitions';
 import { cn } from 'clsx-for-tailwind';
+import { Link } from 'react-router';
 
 export default function ProductCard({
     id,
@@ -13,8 +14,8 @@ export default function ProductCard({
 }: HomeProduct & { activeCategory: string }) {
     return (
         (category === activeCategory || activeCategory === 'all') && (
-            <a
-                href={`/products/${id}`}
+            <Link
+                to={`/products/${id}`}
                 className={cn('relative p-4 hover:shadow-2xl group', {
                     'opacity-50': !inStock,
                 })}
@@ -42,7 +43,7 @@ export default function ProductCard({
                         {`${price.currencySymbol}${price.amount.toFixed(2)}`}
                     </div>
                 </div>
-            </a>
+            </Link>
         )
     );
 }
