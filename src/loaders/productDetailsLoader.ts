@@ -33,6 +33,7 @@ export const productDetailsLoader = async ({ params }: LoaderFunctionArgs) => {
         const result = await client.query({
             query,
             variables: { id: productId },
+            fetchPolicy: 'network-only',
         });
         console.log(result.data.product);
         return result.data.product;
