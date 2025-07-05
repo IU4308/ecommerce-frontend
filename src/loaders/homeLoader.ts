@@ -9,8 +9,12 @@ export const productsLoader = async () => {
                 name
                 brand
                 category
-                price
-                imageUrl
+                price {
+                    amount
+                    currencyLabel
+                    currencySymbol
+                }
+                gallery
                 inStock
             }
         }

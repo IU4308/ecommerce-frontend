@@ -4,6 +4,7 @@ import ProductDetails from './components/pdp/ProductDetails';
 import Home from './components/home/Home';
 import { categoryLoader } from './loaders/categoryLoader';
 import { productsLoader } from './loaders/homeLoader';
+import { productDetailsLoader } from './loaders/productDetailsLoader';
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
             {
                 path: '/products/:productId',
                 Component: ProductDetails,
+                loader: productDetailsLoader,
             },
         ],
     },
