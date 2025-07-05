@@ -77,4 +77,33 @@
   button {
     @apply cursor-pointer
   }
+
+  /* hide scrollbar but still allow scroll */
+  .scrollbar-hide {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  /* Hide or make scrollbars thin */
+  .scrollbar-thin {
+    scrollbar-width: thin;              /* Firefox */
+    -ms-overflow-style: auto;           /* Edge */
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;                         /* Chrome/Safari */
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.5);  /* Optional: customize */
+    border-radius: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;            /* Optional: transparent track */
+  }
 }

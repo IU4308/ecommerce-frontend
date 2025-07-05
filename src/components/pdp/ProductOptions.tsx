@@ -6,7 +6,7 @@ export default function ProductOptions() {
     const { name, description, price, attributes } = useLoaderData();
     // console.log(attributes);
     return (
-        <div className="flex flex-none basis-1/4 flex-col gap-8">
+        <div className="flex flex-col gap-8">
             <h1 className="font-bold text-2xl">{name}</h1>
             {/* <Sizes /> */}
             <AttributeList attributes={attributes} />

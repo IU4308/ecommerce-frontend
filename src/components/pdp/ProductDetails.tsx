@@ -3,23 +3,53 @@ import ProductGallery from './ProductGallery';
 import ProductOptions from './ProductOptions';
 import ProductThumbnails from './ProductThumbnails';
 import { useState } from 'react';
+import { GrNext, GrPrevious } from 'react-icons/gr';
 
 export default function ProductDetails() {
     const product = useLoaderData();
-    const [currentThumbnail, setCurrentThumbnail] = useState(
-        product.gallery[0]
-    );
-    setCurrentThumbnail(product.gallery[0]);
-    // const handleThumbnailClick = (thumbnail: string) => {
-    //     setCurrentThumbnail(thumbnail);
-    // };
+    const thumbnails = product.gallery || [];
+    const [currentImageId, setCurrentImageId] = useState(0);
+
+    const handleSelectThumbnail = (id: number) => {
+        setCurrentImageId(id);
+    };
+
+    const handleNextThumbnail = () => {
+        setCurrentImageId((id) => (id + 1) % thumbnails.length);
+    };
+
+    const handlePreviousThumbnail = () => {
+        setCurrentImageId(
+            (id) => (id - 1 + thumbnails.length) % thumbnails.length
+        );
+    };
+
     return (
-        <div className="max-md:flex-col flex gap-4 md:gap-8 lg:gap-24">
-            <div className="flex gap-8">
-                <ProductThumbnails thumbnails={product.gallery} />
-                <ProductGallery imageUrl={currentThumbnail} />
+        <div className="flex max-xl:flex-col w-full h-full xl:h-[600px]">
+            <div className="relative flex xl:flex-row flex-col flex-grow xl:h-full max-xl:max-h-[400px] overflow-hidden gap-4">
+                <ProductThumbnails
+                    thumbnails={thumbnails}
+                    imageId={currentImageId}
+                    handleSelectThumbnail={handleSelectThumbnail}
+                />
+                <ProductGallery imageUrl={thumbnails[currentImageId]} />
+                <button
+                    onClick={handleNextThumbnail}
+                    className="absolute p-2 top-1/2 right-4 text-2xl z-20 bg-black text-white opacity-75"
+                >
+                    <GrNext />
+                </button>
+                <button
+                    onClick={handlePreviousThumbnail}
+                    className="absolute p-2 top-1/2 left-4 xl:left-[120px] text-2xl z-20 bg-black text-white opacity-75"
+                >
+                    <GrPrevious />
+                </button>
             </div>
-            <ProductOptions />
+
+            <div className="w-full xl:w-[350px] shrink-0 overflow-auto px-4">
+                <ProductOptions />
+            </div>
         </div>
     );
 }

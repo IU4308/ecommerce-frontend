@@ -3,7 +3,7 @@ import Header from '../components/Header';
 
 export default function AppLayout() {
     return (
-        <div>
+        <div className="max-w-[1500px] mx-auto">
             <Header />
             <main className="p-16">
                 <Outlet />
