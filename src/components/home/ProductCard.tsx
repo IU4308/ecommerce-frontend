@@ -1,7 +1,7 @@
+import { Form, Link } from 'react-router';
 import { IoCartOutline } from 'react-icons/io5';
 import type { HomeProduct } from '../../definitions';
 import { cn } from 'clsx-for-tailwind';
-import { Link } from 'react-router';
 import Price from '../shared/Price';
 
 export default function ProductCard({
@@ -11,8 +11,9 @@ export default function ProductCard({
     inStock,
     price,
     gallery: [imageUrl],
+    brand,
     activeCategory,
-}: HomeProduct & { activeCategory: string }) {
+}: HomeProduct & { activeCategory: string; brand?: string }) {
     return (
         (category === activeCategory || activeCategory === 'all') && (
             <Link
@@ -32,16 +33,28 @@ export default function ProductCard({
                 />
                 <div className="relative">
                     {inStock && (
-                        <button
-                            disabled={!inStock}
-                            className="p-2 hover:opacity-90 active:opacity-70 rounded-full absolute z-10 bg-primary top-[-20px] right-5 opacity-0 group-hover:opacity-100 transition"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                            }}
-                        >
-                            <IoCartOutline className="text-2xl text-primary-foreground" />
-                        </button>
+                        <Form method="post">
+                            <input
+                                type="hidden"
+                                name="product"
+                                value={JSON.stringify({
+                                    id,
+                                    name,
+                                    brand,
+                                    price,
+                                    category,
+                                    gallery: [imageUrl],
+                                    inStock,
+                                })}
+                            />
+                            <button
+                                type="submit"
+                                onClick={(e) => e.stopPropagation()}
+                                className="p-2 hover:opacity-90 active:opacity-70 rounded-full absolute z-10 bg-primary top-[-20px] right-5 opacity-0 group-hover:opacity-100 transition"
+                            >
+                                <IoCartOutline className="text-2xl text-primary-foreground" />
+                            </button>
+                        </Form>
                     )}
                     <div className="text-2xl pt-4">{name}</div>
                     <Price {...price} />

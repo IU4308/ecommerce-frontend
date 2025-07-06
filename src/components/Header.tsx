@@ -21,9 +21,14 @@ export default function Header({
             </NavLink>
             <button onClick={onToggleCart} className="relative">
                 <IoCartOutline className="text-4xl" />
-                <div className="absolute top-[-5px] right-[-10px] text-white bg-black px-2 rounded-full">
-                    {items.length}
-                </div>
+                {items.length > 0 && (
+                    <div className="absolute top-[-5px] right-[-10px] text-white bg-black px-2 rounded-full">
+                        {items.reduce(
+                            (count, curr) => count + curr.quantity,
+                            0
+                        )}
+                    </div>
+                )}
             </button>
 
             {cartIsOpen && <Cart />}
