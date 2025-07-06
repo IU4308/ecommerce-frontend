@@ -2,7 +2,18 @@ export type CategoryType = {
     name: string;
 };
 
-export type Price = {
+export type ProductType = {
+    id: string;
+    name: string;
+    brand: string;
+    description: string;
+    inStock: boolean;
+    gallery: string[];
+    attributes: AttributeType[];
+    price: PriceType;
+};
+
+export type PriceType = {
     amount: number;
     currencyLabel: string;
     currencySymbol: string;
@@ -13,7 +24,7 @@ export type HomeProduct = {
     name: string;
     category: string;
     inStock: boolean;
-    price: Price;
+    price: PriceType;
     gallery: string[];
 };
 

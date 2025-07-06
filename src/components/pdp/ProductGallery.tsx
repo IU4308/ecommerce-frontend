@@ -1,6 +1,6 @@
 export default function ProductGallery({ imageUrl }: { imageUrl: string }) {
     return (
-        <div className="flex-1 h-full overflow-hidden xl:overflow-auto scrollbar-hide">
+        <div className="flex-1 h-full overflow-hidden xl:overflow-auto scrollbar-thin">
             <div className="w-full h-full xl:w-max xl:h-max xl:min-w-full xl:min-h-full ">
                 <img
                     src={imageUrl}

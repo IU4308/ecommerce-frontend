@@ -2,6 +2,7 @@ import { IoCartOutline } from 'react-icons/io5';
 import type { HomeProduct } from '../../definitions';
 import { cn } from 'clsx-for-tailwind';
 import { Link } from 'react-router';
+import Price from '../shared/Price';
 
 export default function ProductCard({
     id,
@@ -39,9 +40,10 @@ export default function ProductCard({
                         </button>
                     )}
                     <div className="text-2xl pt-4">{name}</div>
-                    <div className="text-lg text-secondary">
+                    {/* <div className="text-lg text-secondary">
                         {`${price.currencySymbol}${price.amount.toFixed(2)}`}
-                    </div>
+                    </div> */}
+                    <Price {...price} />
                 </div>
             </Link>
         )
