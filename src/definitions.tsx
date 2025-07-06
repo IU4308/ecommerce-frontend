@@ -14,6 +14,11 @@ export type ProductType = {
     price: PriceType;
 };
 
+export type CartItemType = ProductType & {
+    selectedAttributes: Record<string, string>;
+    quantity: number;
+};
+
 export type PriceType = {
     amount: number;
     currencyLabel: string;

@@ -1,4 +1,4 @@
-import type { CartItemType } from '../store/useCartStore';
+import type { CartItemType } from '../definitions';
 import { useCartStore } from '../store/useCartStore';
 import AttributeList from './shared/AttributeList';
 import Price from './shared/Price';

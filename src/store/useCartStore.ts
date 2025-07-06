@@ -1,20 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { AttributeType, PriceType } from '../definitions';
-
-export type CartItemType = {
-    id: string;
-    name: string;
-    brand: string;
-    category: string;
-    description: string;
-    inStock: boolean;
-    gallery: string[];
-    attributes: AttributeType[];
-    price: PriceType;
-    selectedAttributes: Record<string, string>;
-    quantity: number;
-};
+import type { CartItemType } from '../definitions';
 
 type CartStore = {
     items: CartItemType[];
