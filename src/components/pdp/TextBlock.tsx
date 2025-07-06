@@ -1,6 +1,17 @@
-export default function TextBlock({ value }: { value: string }) {
+type Props = {
+    value: string;
+    selected: boolean;
+    onClick: () => void;
+};
+
+export default function TextBlock({ value, selected, onClick }: Props) {
     return (
-        <div className="flex-1 h-10 border flex justify-center items-center">
+        <div
+            onClick={onClick}
+            className={`px-4 py-2 border cursor-pointer ${
+                selected ? 'bg-black text-white' : ''
+            }`}
+        >
             {value}
         </div>
     );

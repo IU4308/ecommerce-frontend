@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router';
 import ProductCard from './ProductCard';
 import type { HomeProduct } from '../../definitions';
-import { useCategoryStore } from '../../store/categoryStore';
+import { useCategoryStore } from '../../store/useCategoryStore';
 
 export default function Home() {
     const products = useLoaderData() as HomeProduct[];

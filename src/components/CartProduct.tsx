@@ -1,19 +1,59 @@
-import type { ProductType } from '../definitions';
+import type { CartItemType } from '../store/useCartStore';
+import { useCartStore } from '../store/useCartStore';
 import AttributeList from './shared/AttributeList';
 import Price from './shared/Price';
+import { useState } from 'react';
+import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci';
 
-export default function CartProduct({ name, price, attributes }: ProductType) {
+export default function CartProduct({
+    id,
+    name,
+    gallery,
+    price,
+    attributes,
+    selectedAttributes,
+    quantity,
+}: CartItemType) {
+    const incrementItem = useCartStore((state) => state.incrementItem);
+    const decrementItem = useCartStore((state) => state.decrementItem);
+
+    const updateAttributes = useCartStore((state) => state.updateAttributes);
+    const [localSelected, setLocalSelected] =
+        useState<Record<string, string>>(selectedAttributes);
+
+    const handleAttributeChange = (attrName: string, itemId: string) => {
+        const newAttributes = { ...localSelected, [attrName]: itemId };
+        setLocalSelected(newAttributes);
+        updateAttributes(id, selectedAttributes, newAttributes);
+    };
+
     return (
-        <div className="flex gap-2 items-stretch">
-            <div className="flex flex-col gap-2  flex-1">
-                <h2 className="text-2xl text-secondary">{name}</h2>
-                <Price {...price} />
-                <AttributeList attributes={attributes} />
+        <div className="flex gap-4 items-stretch border-b py-4">
+            <div className="flex flex-col gap-2 flex-1">
+                <h2 className="text-lg">{name}</h2>
+                <Price {...price} className="font-semibold" />
+                <AttributeList
+                    attributes={attributes}
+                    selected={localSelected}
+                    onSelect={handleAttributeChange}
+                />
             </div>
-            <div className=" flex-1">
+
+            <div className="flex flex-col justify-between items-center">
+                <button onClick={() => incrementItem(id, selectedAttributes)}>
+                    <CiSquarePlus className="text-4xl" />
+                </button>
+                <div>{quantity}</div>
+                <button onClick={() => decrementItem(id, selectedAttributes)}>
+                    <CiSquareMinus className="text-4xl" />
+                </button>
+            </div>
+
+            <div className="w-[80px] h-[100px] shrink-0">
                 <img
-                    src="https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087"
-                    className="h-full w-full "
+                    src={gallery[0]}
+                    alt={name}
+                    className="w-full h-full object-contain"
                 />
             </div>
         </div>

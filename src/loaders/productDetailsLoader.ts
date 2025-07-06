@@ -35,7 +35,6 @@ export const productDetailsLoader = async ({ params }: LoaderFunctionArgs) => {
             variables: { id: productId },
             fetchPolicy: 'network-only',
         });
-        console.log(result.data.product);
         return result.data.product;
     } catch (error) {
         console.error(error);

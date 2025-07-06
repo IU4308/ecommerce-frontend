@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router';
-import { useCategoryStore } from '../store/categoryStore';
+import { useCategoryStore } from '../store/useCategoryStore';
 import Category from './Category';
 
 export default function CategoryList() {

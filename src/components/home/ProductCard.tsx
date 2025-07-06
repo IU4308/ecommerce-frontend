@@ -35,14 +35,15 @@ export default function ProductCard({
                         <button
                             disabled={!inStock}
                             className="p-2 hover:opacity-90 active:opacity-70 rounded-full absolute z-10 bg-primary top-[-20px] right-5 opacity-0 group-hover:opacity-100 transition"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                            }}
                         >
                             <IoCartOutline className="text-2xl text-primary-foreground" />
                         </button>
                     )}
                     <div className="text-2xl pt-4">{name}</div>
-                    {/* <div className="text-lg text-secondary">
-                        {`${price.currencySymbol}${price.amount.toFixed(2)}`}
-                    </div> */}
                     <Price {...price} />
                 </div>
             </Link>

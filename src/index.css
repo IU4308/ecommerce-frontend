@@ -106,4 +106,8 @@
   .scrollbar-thin::-webkit-scrollbar-track {
     background: transparent;            /* Optional: transparent track */
   }
+
+  .primary-btn {
+    @apply px-16 py-2 bg-primary text-primary-foreground;
+  }
 }

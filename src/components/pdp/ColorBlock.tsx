@@ -1,9 +1,22 @@
-export default function ColorBlock({ value }: { value: string }) {
-    console.log(value);
+import { cn } from 'clsx-for-tailwind';
+
+type Props = {
+    value: string; // hex color string
+    selected: boolean;
+    onClick: () => void;
+};
+
+export default function ColorBlock({ value, selected, onClick }: Props) {
     return (
         <div
-            className={`flex-1 h-10 border flex justify-center items-center`}
+            onClick={onClick}
+            className={cn(
+                'w-10 h-10 cursor-pointer outline-primary outline-offset-2',
+                {
+                    'outline-2': selected,
+                }
+            )}
             style={{ backgroundColor: value }}
-        ></div>
+        />
     );
 }
