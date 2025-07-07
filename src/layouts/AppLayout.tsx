@@ -28,14 +28,14 @@ export default function AppLayout() {
             {/* Gray overlay when cart is open */}
             {cartIsOpen && (
                 <div
-                    className="fixed inset-0 bg-black/40 backdrop-blur-sm z-10"
+                    className="fixed inset-0 bg-black/40  z-10"
                     onClick={() => setCartIsOpen(false)}
                 />
             )}
 
             <main
                 className={`p-16 relative z-0 transition-all duration-200 ${
-                    cartIsOpen ? 'pointer-events-none blur-sm select-none' : ''
+                    cartIsOpen ? 'pointer-events-none select-none' : ''
                 }`}
             >
                 <Outlet />

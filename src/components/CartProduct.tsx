@@ -2,7 +2,6 @@ import type { CartItemType } from '../definitions';
 import { useCartStore } from '../store/useCartStore';
 import AttributeList from './shared/AttributeList';
 import Price from './shared/Price';
-import { useState } from 'react';
 import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci';
 
 export default function CartProduct({
@@ -17,16 +16,6 @@ export default function CartProduct({
     const incrementItem = useCartStore((state) => state.incrementItem);
     const decrementItem = useCartStore((state) => state.decrementItem);
 
-    const updateAttributes = useCartStore((state) => state.updateAttributes);
-    const [localSelected, setLocalSelected] =
-        useState<Record<string, string>>(selectedAttributes);
-
-    const handleAttributeChange = (attrName: string, itemId: string) => {
-        const newAttributes = { ...localSelected, [attrName]: itemId };
-        setLocalSelected(newAttributes);
-        updateAttributes(id, selectedAttributes, newAttributes);
-    };
-
     return (
         <div className="flex gap-4 items-stretch border-b py-4">
             <div className="flex flex-col gap-2 flex-1">
@@ -34,8 +23,8 @@ export default function CartProduct({
                 <Price {...price} className="font-semibold" />
                 <AttributeList
                     attributes={attributes}
-                    selected={localSelected}
-                    onSelect={handleAttributeChange}
+                    selected={selectedAttributes}
+                    onSelect={() => {}}
                 />
             </div>
 

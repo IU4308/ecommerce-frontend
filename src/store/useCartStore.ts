@@ -5,12 +5,6 @@ import type { CartItemType } from '../definitions';
 type CartStore = {
     items: CartItemType[];
     addItem: (item: Omit<CartItemType, 'quantity'>) => void;
-    updateAttributes: (
-        itemId: string,
-        oldAttributes: Record<string, string>,
-        newAttributes: Record<string, string>
-    ) => void;
-
     incrementItem: (
         id: string,
         selectedAttributes: Record<string, string>
@@ -46,28 +40,6 @@ export const useCartStore = create<CartStore>()(
 
                     return {
                         items: [...state.items, { ...newItem, quantity: 1 }],
-                    };
-                }),
-            updateAttributes: (
-                itemId: string,
-                oldAttributes: Record<string, string>,
-                newAttributes: Record<string, string>
-            ) =>
-                set((state) => {
-                    return {
-                        items: state.items.map((item) => {
-                            const isMatch =
-                                item.id === itemId &&
-                                JSON.stringify(item.selectedAttributes) ===
-                                    JSON.stringify(oldAttributes);
-                            if (isMatch) {
-                                return {
-                                    ...item,
-                                    selectedAttributes: newAttributes,
-                                };
-                            }
-                            return item;
-                        }),
                     };
                 }),
 
