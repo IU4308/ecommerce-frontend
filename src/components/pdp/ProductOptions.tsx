@@ -33,11 +33,6 @@ export default function ProductOptions() {
     };
 
     const handleAddToCart = () => {
-        if (attributes.some((attr) => !selectedAttributes[attr.name])) {
-            alert('Please select all attributes.');
-            return;
-        }
-
         addItem({
             id,
             name,
@@ -63,10 +58,15 @@ export default function ProductOptions() {
             />
 
             <Price {...price} renderTitle className="font-bold" />
-            <button onClick={handleAddToCart} className="primary-btn">
+            <button
+                onClick={handleAddToCart}
+                className="primary-btn"
+                disabled={attributes.some(
+                    (attr) => !selectedAttributes[attr.name]
+                )}
+            >
                 ADD TO CART
             </button>
-            {/* <PrimaryButton onClick={handleAddToCart}>ADD TO CART</PrimaryButton> */}
             <div className="prose">{parse(description)}</div>
         </div>
     );

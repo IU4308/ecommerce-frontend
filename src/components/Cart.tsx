@@ -23,7 +23,9 @@ export default function Cart() {
                 <span>Total:</span>
                 <span>${totalAmount.toFixed(2)}</span>
             </div>
-            <button className="primary-btn">PLACE ORDER</button>
+            <button className="primary-btn " disabled={totalCount === 0}>
+                PLACE ORDER
+            </button>
         </div>
     );
 }

@@ -99,15 +99,15 @@
   }
 
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: rgba(100, 100, 100, 0.5);  /* Optional: customize */
+    background-color: rgba(100, 100, 100, 0.5); 
     border-radius: 4px;
   }
 
   .scrollbar-thin::-webkit-scrollbar-track {
-    background: transparent;            /* Optional: transparent track */
+    background: transparent;            
   }
 
   .primary-btn {
-    @apply px-16 py-2 bg-primary text-primary-foreground;
+    @apply px-16 py-2 bg-primary text-primary-foreground disabled:opacity-70 disabled:cursor-default;
   }
 }
