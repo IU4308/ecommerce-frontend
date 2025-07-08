@@ -6,11 +6,13 @@ import { categoryLoader } from './loaders/categoryLoader';
 import { productsLoader } from './loaders/homeLoader';
 import { productDetailsLoader } from './loaders/productDetailsLoader';
 import { addToCartAction } from './actions/addToCartAction';
+import { placeOrderAction } from './actions/placeOrderActions';
 
 const router = createBrowserRouter([
     {
         Component: AppLayout,
         loader: categoryLoader,
+        action: placeOrderAction,
         children: [
             {
                 index: true,

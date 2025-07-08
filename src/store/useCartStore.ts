@@ -13,6 +13,7 @@ type CartStore = {
         id: string,
         selectedAttributes: Record<string, string>
     ) => void;
+    clearCart: () => void;
 };
 
 export const useCartStore = create<CartStore>()(
@@ -78,6 +79,7 @@ export const useCartStore = create<CartStore>()(
 
                     return { items };
                 }),
+            clearCart: () => set({ items: [] }),
         }),
         {
             name: 'cart-storage',

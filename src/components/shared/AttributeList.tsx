@@ -12,7 +12,6 @@ export default function AttributeList({
     selected,
     onSelect,
 }: Props) {
-    console.log(attributes);
     return (
         <div className="flex flex-col gap-4">
             {attributes.map((attr) => (

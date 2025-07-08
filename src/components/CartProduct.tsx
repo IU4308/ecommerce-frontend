@@ -29,11 +29,17 @@ export default function CartProduct({
             </div>
 
             <div className="flex flex-col justify-between items-center">
-                <button onClick={() => incrementItem(id, selectedAttributes)}>
+                <button
+                    type="button"
+                    onClick={() => incrementItem(id, selectedAttributes)}
+                >
                     <CiSquarePlus className="text-4xl" />
                 </button>
                 <div>{quantity}</div>
-                <button onClick={() => decrementItem(id, selectedAttributes)}>
+                <button
+                    type="button"
+                    onClick={() => decrementItem(id, selectedAttributes)}
+                >
                     <CiSquareMinus className="text-4xl" />
                 </button>
             </div>
