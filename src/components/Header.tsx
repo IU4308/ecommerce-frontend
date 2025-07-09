@@ -19,7 +19,11 @@ export default function Header({
             <NavLink to={'/'}>
                 <FaShopify className="text-primary text-4xl" />
             </NavLink>
-            <button onClick={onToggleCart} className="relative">
+            <button
+                onClick={onToggleCart}
+                className="relative"
+                data-testid="cart-btn"
+            >
                 <IoCartOutline className="text-4xl" />
                 {items.length > 0 && (
                     <div className="absolute top-[-5px] right-[-10px] text-white bg-black px-2 rounded-full">

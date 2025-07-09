@@ -1,5 +1,6 @@
 import type { AttributeType } from '../../definitions';
 import { attributeComponentMap } from '../../utils/AttributeComponentMap';
+import _ from 'lodash';
 
 type AttributeProps = {
     attribute: AttributeType;
@@ -18,6 +19,9 @@ export default function Attribute({
         console.warn(`Unsupported attribute type: ${attribute.type}`);
         return null;
     }
+    const testId = `cart-item-attribute-${_.kebabCase(
+        attribute.name
+    )}-${_.kebabCase(attribute.name)}`;
 
     return (
         <div className="flex flex-col gap-1">
@@ -29,6 +33,11 @@ export default function Attribute({
                         value={item.value}
                         selected={selected === item.itemId}
                         onClick={() => onSelect(item.itemId)}
+                        data-testid={
+                            selected === item.itemId
+                                ? `${testId}-selected`
+                                : testId
+                        }
                     />
                 ))}
             </div>

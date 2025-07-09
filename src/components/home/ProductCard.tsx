@@ -3,6 +3,7 @@ import { IoCartOutline } from 'react-icons/io5';
 import type { HomeProduct } from '../../definitions';
 import { cn } from 'clsx-for-tailwind';
 import Price from '../shared/Price';
+import _ from 'lodash';
 
 export default function ProductCard({
     id,
@@ -21,6 +22,7 @@ export default function ProductCard({
                 className={cn('relative p-4 hover:shadow-2xl group', {
                     'opacity-50': !inStock,
                 })}
+                data-testid={`product-${_.kebabCase(name)}`}
             >
                 {!inStock && (
                     <p className="absolute top-1/3 left-1/4 text-4xl">

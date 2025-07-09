@@ -1,16 +1,19 @@
 import Attribute from './Attribute';
 import type { AttributeType } from '../../definitions';
+import _ from 'lodash';
 
 type Props = {
     attributes: AttributeType[];
     selected: Record<string, string>;
     onSelect: (attributeName: string, itemId: string) => void;
+    context?: 'product' | 'cart';
 };
 
 export default function AttributeList({
     attributes,
     selected,
     onSelect,
+    context,
 }: Props) {
     return (
         <div className="flex flex-col gap-4">
@@ -20,6 +23,9 @@ export default function AttributeList({
                     attribute={attr}
                     selected={selected[attr.name]}
                     onSelect={(itemId) => onSelect(attr.name, itemId)}
+                    data-testid={`${context}-item-attribute-${_.kebabCase(
+                        attr.name
+                    )}`}
                 />
             ))}
         </div>

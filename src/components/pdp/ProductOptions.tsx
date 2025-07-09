@@ -55,6 +55,7 @@ export default function ProductOptions() {
                 attributes={attributes}
                 selected={selectedAttributes}
                 onSelect={handleSelectAttribute}
+                context="product"
             />
 
             <Price {...price} renderTitle className="font-bold" />
@@ -64,10 +65,13 @@ export default function ProductOptions() {
                 disabled={attributes.some(
                     (attr) => !selectedAttributes[attr.name]
                 )}
+                data-testid="add-to-cart"
             >
                 ADD TO CART
             </button>
-            <div className="prose">{parse(description)}</div>
+            <div className="prose" data-testid="product-description">
+                {parse(description)}
+            </div>
         </div>
     );
 }

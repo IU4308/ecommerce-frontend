@@ -39,7 +39,10 @@ export default function Cart() {
             {items.map((product, index) => (
                 <CartProduct key={`${product.id}-${index}`} {...product} />
             ))}
-            <div className="flex justify-between items-center font-bold">
+            <div
+                className="flex justify-between items-center font-bold"
+                data-testid="cart-total"
+            >
                 <span>Total:</span>
                 <span>${totalAmount.toFixed(2)}</span>
             </div>
