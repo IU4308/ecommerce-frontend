@@ -22,5 +22,7 @@ export async function placeOrderAction({ request }: { request: Request }) {
 
     useCartStore.getState().clearCart();
 
+    console.log(result.data.createOrder);
+
     return result.data.createOrder;
 }

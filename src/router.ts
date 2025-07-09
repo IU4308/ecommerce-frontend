@@ -7,6 +7,8 @@ import { productsLoader } from './loaders/homeLoader';
 import { productDetailsLoader } from './loaders/productDetailsLoader';
 import { addToCartAction } from './actions/addToCartAction';
 import { placeOrderAction } from './actions/placeOrderActions';
+import NotFound from './components/NotFound';
+import { createElement } from 'react';
 
 const router = createBrowserRouter([
     {
@@ -24,6 +26,11 @@ const router = createBrowserRouter([
                 path: '/products/:productId',
                 Component: ProductDetails,
                 loader: productDetailsLoader,
+                errorElement: createElement(NotFound),
+            },
+            {
+                path: '*', // 👈 catch-all for unmatched routes
+                Component: NotFound,
             },
         ],
     },
