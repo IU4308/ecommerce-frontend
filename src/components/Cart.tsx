@@ -24,6 +24,7 @@ export default function Cart() {
         <Form
             method="post"
             className="bg-background absolute z-20 top-17 right-14 min-w-[300px] max-h-[80vh] overflow-y-auto scrollbar-thin flex flex-col gap-8 p-4"
+            data-testid="cart-overlay"
         >
             <input
                 type="hidden"

@@ -4,9 +4,15 @@ type Props = {
     value: string; // hex color string
     selected: boolean;
     onClick: () => void;
+    testId: string;
 };
 
-export default function ColorBlock({ value, selected, onClick }: Props) {
+export default function ColorBlock({
+    value,
+    selected,
+    onClick,
+    testId,
+}: Props) {
     return (
         <div
             onClick={onClick}
@@ -17,6 +23,7 @@ export default function ColorBlock({ value, selected, onClick }: Props) {
                 }
             )}
             style={{ backgroundColor: value }}
+            data-testid={testId}
         />
     );
 }

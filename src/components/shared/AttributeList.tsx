@@ -6,7 +6,7 @@ type Props = {
     attributes: AttributeType[];
     selected: Record<string, string>;
     onSelect: (attributeName: string, itemId: string) => void;
-    context?: 'product' | 'cart';
+    context: 'product' | 'cart';
 };
 
 export default function AttributeList({
@@ -23,9 +23,7 @@ export default function AttributeList({
                     attribute={attr}
                     selected={selected[attr.name]}
                     onSelect={(itemId) => onSelect(attr.name, itemId)}
-                    data-testid={`${context}-item-attribute-${_.kebabCase(
-                        attr.name
-                    )}`}
+                    context={context}
                 />
             ))}
         </div>
