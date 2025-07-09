@@ -1,4 +1,4 @@
-import { useLoaderData, useMatches, useParams } from 'react-router';
+import { useLoaderData } from 'react-router';
 import ProductCard from './ProductCard';
 import type { HomeProduct } from '../../definitions';
 import { useCategoryStore } from '../../store/useCategoryStore';
