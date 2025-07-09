@@ -4,6 +4,7 @@ import type { HomeProduct } from '../../definitions';
 import { cn } from 'clsx-for-tailwind';
 import Price from '../shared/Price';
 import _ from 'lodash';
+import { toKebabCase } from '../../utils/helpers';
 
 export default function ProductCard({
     id,
@@ -15,6 +16,7 @@ export default function ProductCard({
     brand,
     activeCategory,
 }: HomeProduct & { activeCategory: string; brand?: string }) {
+    console.log(`product-${toKebabCase(name)}`);
     return (
         (category === activeCategory || activeCategory === 'all') && (
             <Link
@@ -22,7 +24,7 @@ export default function ProductCard({
                 className={cn('relative p-4 hover:shadow-2xl group', {
                     'opacity-50': !inStock,
                 })}
-                data-testid={`product-${_.kebabCase(id)}`}
+                data-testid={`product-${toKebabCase(name)}`}
             >
                 {!inStock && (
                     <p className="absolute top-1/3 left-1/4 text-4xl">

@@ -1,6 +1,7 @@
 import type { AttributeType } from '../../definitions';
 import { attributeComponentMap } from '../../utils/AttributeComponentMap';
 import _ from 'lodash';
+import { toKebabCase } from '../../utils/helpers';
 
 type AttributeProps = {
     attribute: AttributeType;
@@ -21,14 +22,14 @@ export default function Attribute({
         console.warn(`Unsupported attribute type: ${attribute.type}`);
         return null;
     }
-    const testId = `cart-item-attribute-${_.kebabCase(
+    const testId = `cart-item-attribute-${toKebabCase(
         attribute.name
-    )}-${_.kebabCase(attribute.name)}`;
+    )}-${toKebabCase(attribute.name)}`;
 
     return (
         <div
             className="flex flex-col gap-1"
-            data-testid={`${context}-item-attribute-${_.kebabCase(
+            data-testid={`${context}-item-attribute-${toKebabCase(
                 attribute.name
             )}`}
         >
