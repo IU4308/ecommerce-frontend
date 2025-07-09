@@ -29,7 +29,7 @@ const router = createBrowserRouter([
                 errorElement: createElement(NotFound),
             },
             {
-                path: '*', // 👈 catch-all for unmatched routes
+                path: '*',
                 Component: NotFound,
             },
         ],

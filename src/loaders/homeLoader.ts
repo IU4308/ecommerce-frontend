@@ -1,27 +1,9 @@
-import { gql } from '@apollo/client';
 import { client } from '../apollo';
+import { GET_PRODUCT_LISTING } from '../graphql/queries/getProductListing';
 
 export const productsLoader = async () => {
-    const query = gql`
-        query {
-            products {
-                id
-                name
-                brand
-                category
-                price {
-                    amount
-                    currencyLabel
-                    currencySymbol
-                }
-                gallery
-                inStock
-            }
-        }
-    `;
-
     try {
-        const result = await client.query({ query });
+        const result = await client.query({ query: GET_PRODUCT_LISTING });
         return result.data.products;
     } catch (error) {
         console.error(error);

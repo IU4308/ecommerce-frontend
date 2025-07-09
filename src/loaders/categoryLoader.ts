@@ -1,17 +1,9 @@
-import { gql } from '@apollo/client';
 import { client } from '../apollo';
+import { GET_CATEGORIES } from '../graphql/queries/getCategories';
 
 export const categoryLoader = async () => {
-    const query = gql`
-        query {
-            categories {
-                name
-            }
-        }
-    `;
-
     try {
-        const result = await client.query({ query });
+        const result = await client.query({ query: GET_CATEGORIES });
         return result.data.categories;
     } catch (error) {
         console.error(error);

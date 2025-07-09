@@ -1,38 +1,14 @@
-import { gql, ApolloError } from '@apollo/client';
+import { ApolloError } from '@apollo/client';
 import { client } from '../apollo';
 import type { LoaderFunctionArgs } from 'react-router';
-
-const query = gql`
-    query GetProduct($id: ID!) {
-        product(id: $id) {
-            id
-            name
-            description
-            price {
-                amount
-                currencySymbol
-            }
-            inStock
-            gallery
-            attributes {
-                name
-                type
-                items {
-                    itemId
-                    value
-                    displayValue
-                }
-            }
-        }
-    }
-`;
+import { GET_PRODUCT } from '../graphql/queries/getProduct';
 
 export const productDetailsLoader = async ({ params }: LoaderFunctionArgs) => {
     const { productId } = params;
 
     try {
         const result = await client.query({
-            query,
+            query: GET_PRODUCT,
             variables: { id: productId },
             fetchPolicy: 'network-only',
         });

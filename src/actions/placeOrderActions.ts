@@ -1,6 +1,6 @@
-import { gql } from '@apollo/client';
 import { client } from '../apollo';
 import { useCartStore } from '../store/useCartStore';
+import { CREATE_ORDER } from '../graphql/mutations/createOrder';
 
 export async function placeOrderAction({ request }: { request: Request }) {
     const formData = await request.formData();
@@ -9,14 +9,7 @@ export async function placeOrderAction({ request }: { request: Request }) {
     const { items } = JSON.parse(raw);
 
     const result = await client.mutate({
-        mutation: gql`
-            mutation CreateOrder($items: [OrderItemInput!]!) {
-                createOrder(items: $items) {
-                    id
-                    createdAt
-                }
-            }
-        `,
+        mutation: CREATE_ORDER,
         variables: { items },
     });
 
