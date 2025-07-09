@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, redirect } from 'react-router';
 import AppLayout from './layouts/AppLayout';
 import ProductDetails from './components/pdp/ProductDetails';
 import Home from './components/home/Home';
@@ -18,10 +18,16 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component: Home,
-                loader: productsLoader,
-                action: addToCartAction,
+                loader: () => redirect('/all'),
             },
+            {
+                path: '/:category',
+                Component: Home,
+                loader: productsLoader, // products only
+                action: addToCartAction,
+                errorElement: createElement(NotFound),
+            },
+
             {
                 path: '/products/:productId',
                 Component: ProductDetails,

@@ -13,7 +13,7 @@ export default function Category({
     const isActive = activeCategory === name;
     return (
         <Link
-            to={'/'}
+            to={`/${name}`}
             className={cn('uppercase', {
                 'underline underline-offset-26 text-primary': isActive,
             })}

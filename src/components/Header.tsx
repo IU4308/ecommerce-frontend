@@ -35,7 +35,7 @@ export default function Header({
                 )}
             </button>
 
-            {cartIsOpen && <Cart />}
+            {cartIsOpen && <Cart data-testid="cart-overlay" />}
         </header>
     );
 }
