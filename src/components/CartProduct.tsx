@@ -21,7 +21,7 @@ export default function CartProduct({
                     attributes={attributes}
                     selected={selectedAttributes}
                     onSelect={() => {}}
-                    context="cart"
+                    context="cart-item"
                 />
             </div>
 

@@ -7,7 +7,7 @@ type AttributeProps = {
     attribute: AttributeType;
     selected: string | undefined;
     onSelect: (itemId: string) => void;
-    context: 'product' | 'cart';
+    context: 'product' | 'cart-item';
 };
 
 export default function Attribute({
@@ -22,16 +22,16 @@ export default function Attribute({
         console.warn(`Unsupported attribute type: ${attribute.type}`);
         return null;
     }
-    const testId = `cart-item-attribute-${toKebabCase(
+    const testId = `${context}-attribute-${toKebabCase(
         attribute.name
     )}-${toKebabCase(attribute.name)}`;
+
+    console.log(`${context}-attribute-${toKebabCase(attribute.name)}`);
 
     return (
         <div
             className="flex flex-col gap-1"
-            data-testid={`${context}-item-attribute-${toKebabCase(
-                attribute.name
-            )}`}
+            data-testid={`${context}-attribute-${toKebabCase(attribute.name)}`}
         >
             <h2 className="font-bold">{attribute.name}</h2>
             <div className="flex gap-2">

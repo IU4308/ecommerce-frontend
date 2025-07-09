@@ -6,7 +6,7 @@ type Props = {
     attributes: AttributeType[];
     selected: Record<string, string>;
     onSelect: (attributeName: string, itemId: string) => void;
-    context: 'product' | 'cart';
+    context: 'product' | 'cart-item';
 };
 
 export default function AttributeList({
