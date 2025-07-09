@@ -24,5 +24,7 @@ export async function addToCartAction({ request }: { request: Request }) {
         selectedAttributes,
     });
 
+    useCartStore.getState().openCart();
+
     return null;
 }

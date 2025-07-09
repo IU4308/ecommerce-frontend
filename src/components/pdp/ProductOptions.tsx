@@ -24,6 +24,7 @@ export default function ProductOptions() {
         Record<string, string>
     >({});
     const addItem = useCartStore((state) => state.addItem);
+    const openCart = useCartStore((state) => state.openCart);
 
     const handleSelectAttribute = (attrName: string, itemId: string) => {
         setSelectedAttributes((prev) => ({
@@ -45,6 +46,7 @@ export default function ProductOptions() {
             price,
             selectedAttributes,
         });
+        openCart();
     };
 
     return (

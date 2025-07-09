@@ -5,14 +5,10 @@ import CategoryList from './CategoryList';
 import Cart from './Cart';
 import { useCartStore } from '../store/useCartStore';
 
-export default function Header({
-    cartIsOpen,
-    onToggleCart,
-}: {
-    cartIsOpen: boolean;
-    onToggleCart: () => void;
-}) {
+export default function Header() {
     const items = useCartStore((state) => state.items);
+    const cartIsOpen = useCartStore((state) => state.cartIsOpen);
+    const toggleCart = useCartStore((state) => state.toggleCart);
     return (
         <header className="sticky top-0 bg-background z-20 flex items-center justify-between px-16 py-4">
             <CategoryList />
@@ -20,7 +16,7 @@ export default function Header({
                 <FaShopify className="text-primary text-4xl" />
             </NavLink>
             <button
-                onClick={onToggleCart}
+                onClick={toggleCart}
                 className="relative"
                 data-testid="cart-btn"
             >

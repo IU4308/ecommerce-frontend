@@ -1,9 +1,12 @@
 import { Outlet } from 'react-router';
 import Header from '../components/Header';
 import { useState, useEffect } from 'react';
+import { useCartStore } from '../store/useCartStore';
 
 export default function AppLayout() {
-    const [cartIsOpen, setCartIsOpen] = useState(false);
+    // const [cartIsOpen, setCartIsOpen] = useState(false);
+    const cartIsOpen = useCartStore((state) => state.cartIsOpen);
+    const closeCart = useCartStore((state) => state.closeCart);
 
     // Prevent background scroll when cart is open
     useEffect(() => {
@@ -21,15 +24,15 @@ export default function AppLayout() {
     return (
         <div className="relative max-w-[1500px] mx-auto">
             <Header
-                cartIsOpen={cartIsOpen}
-                onToggleCart={() => setCartIsOpen((open) => !open)}
+            // cartIsOpen={cartIsOpen}
+            // onToggleCart={() => setCartIsOpen((open) => !open)}
             />
 
             {/* Gray overlay when cart is open */}
             {cartIsOpen && (
                 <div
                     className="fixed inset-0 bg-black/40  z-10"
-                    onClick={() => setCartIsOpen(false)}
+                    onClick={closeCart}
                 />
             )}
 

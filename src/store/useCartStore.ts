@@ -4,6 +4,7 @@ import type { CartItemType } from '../definitions';
 
 type CartStore = {
     items: CartItemType[];
+    cartIsOpen: boolean;
     addItem: (item: Omit<CartItemType, 'quantity'>) => void;
     incrementItem: (
         id: string,
@@ -14,12 +15,17 @@ type CartStore = {
         selectedAttributes: Record<string, string>
     ) => void;
     clearCart: () => void;
+
+    openCart: () => void;
+    closeCart: () => void;
+    toggleCart: () => void;
 };
 
 export const useCartStore = create<CartStore>()(
     persist(
         (set) => ({
             items: [],
+            cartIsOpen: false,
             addItem: (newItem) =>
                 set((state) => {
                     const existingItem = state.items.find(
@@ -80,6 +86,10 @@ export const useCartStore = create<CartStore>()(
                     return { items };
                 }),
             clearCart: () => set({ items: [] }),
+            openCart: () => set({ cartIsOpen: true }),
+            closeCart: () => set({ cartIsOpen: false }),
+            toggleCart: () =>
+                set((state) => ({ cartIsOpen: !state.cartIsOpen })),
         }),
         {
             name: 'cart-storage',
