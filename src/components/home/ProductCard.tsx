@@ -22,7 +22,7 @@ export default function ProductCard({
                 className={cn('relative p-4 hover:shadow-2xl group', {
                     'opacity-50': !inStock,
                 })}
-                data-testid={`product-${_.kebabCase(name)}`}
+                data-testid={`product-${_.kebabCase(id)}`}
             >
                 {!inStock && (
                     <p className="absolute top-1/3 left-1/4 text-4xl">

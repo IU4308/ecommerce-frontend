@@ -17,8 +17,6 @@ export default function Attribute({
 }: AttributeProps) {
     const Block = attributeComponentMap[attribute.type];
 
-    console.log(`${context}-item-attribute-${_.kebabCase(attribute.name)}`);
-
     if (!Block) {
         console.warn(`Unsupported attribute type: ${attribute.type}`);
         return null;
