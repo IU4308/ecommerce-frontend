@@ -38,8 +38,8 @@ export default function Attribute({
                         onClick={() => onSelect(item.itemId)}
                         testId={
                             selected === item.itemId
-                                ? `${testId + item.value}-selected`
-                                : testId + item.value
+                                ? `${testId}-${item.value}-selected`
+                                : `${testId}-${item.value}`
                         }
                     />
                 ))}
