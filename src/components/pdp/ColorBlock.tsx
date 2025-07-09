@@ -13,6 +13,7 @@ export default function ColorBlock({
     onClick,
     testId,
 }: Props) {
+    console.log(testId);
     return (
         <div
             onClick={onClick}

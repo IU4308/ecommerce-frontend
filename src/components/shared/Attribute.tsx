@@ -22,17 +22,12 @@ export default function Attribute({
         console.warn(`Unsupported attribute type: ${attribute.type}`);
         return null;
     }
-    const testId = `${context}-attribute-${toKebabCase(
-        attribute.name
-    )}-${toKebabCase(attribute.name)}`;
+    const testId = `${context}-attribute-${toKebabCase(attribute.name)}`;
 
-    console.log(`${context}-attribute-${toKebabCase(attribute.name)}`);
+    // console.log(`${context}-attribute-${toKebabCase(attribute.name)}`);
 
     return (
-        <div
-            className="flex flex-col gap-1"
-            data-testid={`${context}-attribute-${toKebabCase(attribute.name)}`}
-        >
+        <div className="flex flex-col gap-1" data-testid={testId}>
             <h2 className="font-bold">{attribute.name}</h2>
             <div className="flex gap-2">
                 {attribute.items.map((item) => (
@@ -43,8 +38,8 @@ export default function Attribute({
                         onClick={() => onSelect(item.itemId)}
                         testId={
                             selected === item.itemId
-                                ? `${testId}-selected`
-                                : testId
+                                ? `${testId + item.value}-selected`
+                                : testId + item.value
                         }
                     />
                 ))}
