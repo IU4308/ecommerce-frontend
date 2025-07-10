@@ -1,9 +1,12 @@
-import { Outlet } from 'react-router';
+import { Outlet, useNavigation } from 'react-router';
 import Header from '../components/Header';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useCartStore } from '../store/useCartStore';
 
 export default function AppLayout() {
+    const navigation = useNavigation();
+    const isLoading = navigation.state === 'loading';
+
     const cartIsOpen = useCartStore((state) => state.cartIsOpen);
     const closeCart = useCartStore((state) => state.closeCart);
 
@@ -19,10 +22,19 @@ export default function AppLayout() {
             document.body.style.overflow = '';
         };
     }, [cartIsOpen]);
+    console.log(isLoading);
 
     return (
         <div className="relative max-w-[1500px] mx-auto">
             <Header />
+
+            {isLoading && (
+                <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
+                    <p className="text-lg font-medium">
+                        Waking up server... Please wait ⏳
+                    </p>
+                </div>
+            )}
 
             {/* Gray overlay when cart is open */}
             {cartIsOpen && (
@@ -37,7 +49,9 @@ export default function AppLayout() {
                     cartIsOpen ? 'pointer-events-none select-none' : ''
                 }`}
             >
-                <Outlet />
+                <Suspense fallback={<p>Loading page...</p>}>
+                    <Outlet />
+                </Suspense>
             </main>
         </div>
     );

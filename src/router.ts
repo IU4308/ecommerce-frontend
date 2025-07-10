@@ -23,7 +23,7 @@ const router = createBrowserRouter([
             {
                 path: '/:category',
                 Component: Home,
-                loader: productsLoader, // products only
+                loader: productsLoader,
                 action: addToCartAction,
                 errorElement: createElement(NotFound),
             },
