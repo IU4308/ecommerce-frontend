@@ -6,6 +6,6 @@ type CategoryStore = {
 };
 
 export const useCategoryStore = create<CategoryStore>((set) => ({
-    activeCategory: undefined, // default value
+    activeCategory: undefined,
     setActiveCategory: (category) => set({ activeCategory: category }),
 }));

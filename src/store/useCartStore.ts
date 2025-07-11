@@ -76,7 +76,7 @@ export const useCartStore = create<CartStore>()(
                                 JSON.stringify(item.selectedAttributes) ===
                                     JSON.stringify(selectedAttributes)
                             ) {
-                                if (item.quantity === 1) return null; // remove item
+                                if (item.quantity === 1) return null;
                                 return { ...item, quantity: item.quantity - 1 };
                             }
                             return item;

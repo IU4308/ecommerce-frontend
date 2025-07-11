@@ -24,8 +24,6 @@ export default function Attribute({
     }
     const testId = `${context}-attribute-${toKebabCase(attribute.name)}`;
 
-    // console.log(`${context}-attribute-${toKebabCase(attribute.name)}`);
-
     return (
         <div className="flex flex-col gap-1" data-testid={testId}>
             <h2 className="font-bold">{attribute.name}</h2>

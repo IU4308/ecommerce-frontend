@@ -1,7 +1,7 @@
 import { cn } from 'clsx-for-tailwind';
 
 type Props = {
-    value: string; // hex color string
+    value: string;
     selected: boolean;
     onClick: () => void;
     testId: string;
