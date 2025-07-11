@@ -16,7 +16,6 @@ export default function ProductCard({
     brand,
     activeCategory,
 }: HomeProduct & { activeCategory: string; brand?: string }) {
-    console.log(`product-${toKebabCase(name)}`);
     return (
         (category === activeCategory || activeCategory === 'all') && (
             <Link
