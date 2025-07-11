@@ -1,4 +1,4 @@
-import { useLoaderData, useMatches, useParams } from 'react-router';
+import { useLoaderData, useParams, useRouteLoaderData } from 'react-router';
 import ProductCard from './ProductCard';
 import type { HomeProduct } from '../../definitions';
 import { useCategoryStore } from '../../store/useCategoryStore';
@@ -9,8 +9,7 @@ export default function Home() {
     const { category } = useParams();
     const activeCategory = useCategoryStore((state) => state.activeCategory);
 
-    const categories = useMatches().find((match) => match.pathname === '/')
-        ?.data as { name: string }[];
+    const categories = useRouteLoaderData('layout') as { name: string }[];
 
     const categoryList = categories?.map((c) => c.name.toLowerCase()) ?? [];
 
