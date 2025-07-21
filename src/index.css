@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@import "@tailwindcss/typography";
-
 
 :root {
   --radius: 0.625rem;
@@ -114,7 +112,7 @@
     @apply px-16 py-2 bg-primary text-primary-foreground disabled:opacity-70 disabled:cursor-default;
   }
 
-  /* .prose {
+  .prose {
     font-size: 1rem;
     line-height: 1.75;
   }
@@ -155,7 +153,7 @@
 
   .prose li {
     margin-bottom: 0.25em;
-  } */
+  }
 
 
 }
