@@ -1,11 +1,20 @@
+// src/store/useCategoryStore.ts
 import { create } from 'zustand';
 
+type Category = {
+    name: string;
+};
+
 type CategoryStore = {
-    activeCategory: string | undefined;
-    setActiveCategory: (cat: string) => void;
+    categories: Category[];
+    setCategories: (categories: Category[]) => void;
+    hasFetched: boolean;
+    setHasFetched: (fetched: boolean) => void;
 };
 
 export const useCategoryStore = create<CategoryStore>((set) => ({
-    activeCategory: undefined,
-    setActiveCategory: (category) => set({ activeCategory: category }),
+    categories: [],
+    hasFetched: false,
+    setCategories: (categories) => set({ categories }),
+    setHasFetched: (fetched) => set({ hasFetched: fetched }),
 }));

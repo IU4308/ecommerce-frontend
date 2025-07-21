@@ -3,7 +3,6 @@ import { IoCartOutline } from 'react-icons/io5';
 import type { HomeProduct } from '../../definitions';
 import { cn } from 'clsx-for-tailwind';
 import Price from '../shared/Price';
-import _ from 'lodash';
 import { toKebabCase } from '../../utils/helpers';
 
 export default function ProductCard({

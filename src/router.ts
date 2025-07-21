@@ -1,4 +1,4 @@
-import { createBrowserRouter, redirect } from 'react-router';
+import { createBrowserRouter } from 'react-router';
 import AppLayout from './layouts/AppLayout';
 import ProductDetails from './components/pdp/ProductDetails';
 import Home from './components/home/Home';
@@ -9,6 +9,7 @@ import { addToCartAction } from './actions/addToCartAction';
 import { placeOrderAction } from './actions/placeOrderActions';
 import NotFound from './components/NotFound';
 import { createElement } from 'react';
+import { rootRedirectLoader } from './loaders/rootRedirectLoader';
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                loader: () => redirect('/all'),
+                loader: rootRedirectLoader,
             },
             {
                 path: '/:category',

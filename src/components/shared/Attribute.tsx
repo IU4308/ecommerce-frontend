@@ -1,6 +1,5 @@
 import type { AttributeType } from '../../definitions';
 import { attributeComponentMap } from '../../utils/AttributeComponentMap';
-import _ from 'lodash';
 import { toKebabCase } from '../../utils/helpers';
 
 type AttributeProps = {

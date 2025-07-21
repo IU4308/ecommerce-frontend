@@ -1,12 +1,6 @@
-import { client } from '../apollo';
-import { GET_CATEGORIES } from '../graphql/queries/getCategories';
+// src/loaders/categoryLoader.ts
+import { fetchCategories } from '../utils/fetchCategories';
 
 export const categoryLoader = async () => {
-    try {
-        const result = await client.query({ query: GET_CATEGORIES });
-        return result.data.categories;
-    } catch (error) {
-        console.error(error);
-        throw new Response('Failed to fetch categories', { status: 500 });
-    }
+    return await fetchCategories();
 };

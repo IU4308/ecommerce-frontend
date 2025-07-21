@@ -1,6 +1,5 @@
 import Attribute from './Attribute';
 import type { AttributeType } from '../../definitions';
-import _ from 'lodash';
 
 type Props = {
     attributes: AttributeType[];
