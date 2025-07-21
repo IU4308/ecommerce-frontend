@@ -49,8 +49,6 @@ export default function ProductOptions() {
         openCart();
     };
 
-    console.log(description);
-
     return (
         <div className="flex flex-col gap-8">
             <h2 className="font-bold text-2xl">{name}</h2>
